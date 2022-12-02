@@ -1,0 +1,60 @@
+import java.util.Scanner;
+class methods{
+String USN;
+String Name;
+int[] credits= new int[7];
+int[] marks= new int[7];
+int gradepoints;
+double sgpa;
+
+void accept(){
+Scanner SS= new Scanner(System.in);
+System.out.println("Enter your USN and name");
+USN= SS.next();
+Name= SS.next();
+for( int i=0; i<7; i++){
+    System.out.println("Enter marks for subject: "+(i+1));
+    marks[i]= SS.nextInt();
+}
+for( int i=0; i<7; i++){
+    System.out.println("Enter credits for subject: "+(i+1));
+    credits[i]= SS.nextInt();
+    }
+}
+
+void display(){
+System.out.println("USN: "+USN);
+System.out.println("Name: "+name);
+for(int i=0;i<7;i++){System.out.println("Marks: "+marks[i]+" Credits: "+credits[i]+"\n");}
+}
+
+void gradepoint(){
+for( int i=0;i<7;i++){
+if(marks[i]>=90 &&marks[i]<=100)
+ gradepoints=10;
+else if(marks[i]>=80 && marks[i]<=89) 
+gradepoints=9;
+else if(marks[i]>=70 && marks[i]<=79) 
+gradepoints=8;
+else if(marks[i]>=60 && marks[i]<=69)
+gradepoints=7;
+else if(marks[i]>=55 && marks[i]<=59) 
+gradepoints=6;
+else if(marks[i]>=50 && marks[i]<=54) 
+gradepoints=5;
+else if(marks[i]>=40 && marks[i]<=49) 
+gradepoints=4;
+else { gradepoints=0;
+System.out.println("Subject failed"); }
+sgpa=sgpa+(credits[i]*gradepoints);}
+sgpa=sgpa/20;
+System.out.println("SGPA is: "+sgpa);
+}
+}
+class main_sgpa{
+public static void main(String S[]){
+methods m1= new methods();
+m1.accept();
+m1.display();
+m1.gradepoint();
+}} 
