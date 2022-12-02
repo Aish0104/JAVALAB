@@ -1,0 +1,62 @@
+1 of 69
+(no subject)
+Inbox
+
+Aishwarya A Ghatapanadi <aishwarya.cs21@bmsce.ac.in>
+1:08 PM (2 hours ago)
+to Aishwaryaghatapanadi
+
+import java.util.Scanner;
+class book
+{
+    String name;
+    String au;
+    double price;
+    int num_pages;
+
+book(){}
+book(String na,String a,int pr,int p)
+{
+  name="x";
+  au="y";
+  price=0.0;
+  num_pages=0;
+}
+void getd()
+{
+    Scanner S=new Scanner(System.in);
+    System.out.println("Enter the name of the book:");
+    name=S.next();
+    System.out.println("Enter the name of the author:");
+    au=S.next();
+    System.out.println("Enter the price of book:");
+    price=S.nextDouble();
+    System.out.println("Enter the number of pages:");
+    num_pages=S.nextInt();
+}
+public String toString()
+{
+    String SS="Name of the book is"+name+"Name of the author is"+au+"Price of the book is"+price+"Number of pages in book is"+num_pages;
+    return SS;
+}
+}
+class main_book
+{
+    public static void main(String args[])
+    {
+        Scanner S1=new Scanner(System.in);
+        System.out.print("Enter the number of books:");
+        int n=S1.nextInt();
+        book b[]=new book[n];
+        for(int i=0; i<n; i++)
+        {
+            b[i]=new book();
+            System.out.println("Enter book"+(i+1)+"details:");
+            b[i].getd();
+        }
+        for(int i=0; i<n; i++)
+        {
+            System.out.println("Book"+(i+1)+"details:");
+            System.out.println(b[i]);
+        }
+    }}
