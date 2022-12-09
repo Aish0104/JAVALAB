@@ -1,0 +1,74 @@
+import java.util.Scanner;
+abstract class Shape
+{
+    int x;
+    int y;
+    Shape()
+    {
+        x=0;
+        y=0;
+    }
+    abstract void printArea(int a,int b);
+}
+
+class rectangle extends Shape
+{
+    void printArea(int a,int b){
+    int area;
+    x=a;
+    y=b;
+    area=x*y;
+    System.out.println("Area of the rectangle is:"+area);
+    }
+}
+class triangle extends Shape
+{
+    void printArea(int a,int b){
+        double area;
+        x=a;
+        y=b;
+        area=(double)0.5*x*y;
+        System.out.println("Area of the triangle is:"+area);
+    }
+}
+class circle extends Shape
+{
+    void printArea(int a,int b){
+        double area;
+        x=a;
+        y=b;
+        area=(double)3.14*x*y;
+        System.out.println("Area of the circle is:"+area);
+
+    }
+}
+
+class Main
+{
+    public static void main(String args[]) {
+        rectangle r1=new rectangle();
+        rectangle r2=new rectangle();
+        triangle t1=new triangle();
+        triangle t2=new triangle();
+        circle c1=new circle();
+        circle c2=new circle();
+        int m;
+        int n;
+        Scanner S=new Scanner(System.in);
+        System.out.println("Enter the length and breadth of rectangle:");
+        m=S.nextInt();
+        n=S.nextInt();
+        r1.printArea(m,n);
+        
+        System.out.println("Enter the height and base of triangle:");
+        m=S.nextInt();
+        n=S.nextInt();
+        t1.printArea(m,n);
+       
+        System.out.println("Enter the radius of circle twice:");
+        m=S.nextInt();
+        n=S.nextInt();
+        c1.printArea(m,n);
+        
+    }
+}
