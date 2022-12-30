@@ -1,0 +1,77 @@
+import java.util.Scanner;
+class Wrongage extends Exception
+{
+    String msg=new String();
+    Wrongage(String x)
+    {
+        msg=x;
+    }
+    public String toString()
+    {
+        return msg;
+    }
+}
+class lessage extends Exception
+{
+    String msg=new String();
+    lessage(String x)
+    {
+        msg=x;
+    }
+    public String toString()
+    {
+        return msg;
+    }
+}
+class father
+{
+    int fage;
+    father() throws Wrongage
+    {
+        Scanner S=new Scanner(System.in);
+        System.out.println("Enter the fathers age:");
+        fage=S.nextInt();
+        if(fage<0)
+        {
+            throw new Wrongage("Age cannnot be negative");
+        }    
+    }
+}
+   
+class son extends father
+{
+    int sage;
+    son() throws Wrongage,lessage
+    {
+        Scanner S=new Scanner(System.in);
+        System.out.println("Enter the sons age:");
+        sage=S.nextInt();
+        if(sage<0)
+        {
+            throw new Wrongage("Age cannot be negative");
+        }
+        else if(sage>=fage)
+        {
+            throw new lessage("Father's age cannot be less than son's age");
+        }
+    }
+}
+
+class main
+{
+    public static void main(String args[])
+    {
+        try
+        {
+        son s1=new son();
+        }
+        catch(Wrongage wa)
+        {
+            System.out.println(wa);
+        }
+        catch(lessage la)
+        {
+            System.out.println(la);
+        }
+    }
+}
