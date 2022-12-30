@@ -1,0 +1,167 @@
+import java.util.Scanner;  
+class Account {    
+    public static  int min=500;    
+    String name=new String();    
+    int Account_num;    
+    public float o_Price;    
+    Scanner sc=new Scanner(System.in);    
+    public void get_info()    {        
+        System.out.println("Enter Name:");        
+        name=sc.nextLine();        
+        System.out.println("Enter Account Number:");        
+        Account_num=sc.nextInt();        
+        System.out.println("Enter opening Amount must>500:");        
+        o_Price=sc.nextFloat();        
+        if(o_Price<500)        
+        {            
+            System.out.println("Enter opening Amount must be greater than 500");        
+        }    
+    }    
+    public void show()    
+    {        
+        System.out.println("Name:"+name);       
+        System.out.println("Account_number:"+Account_num);        
+        System.out.println("Amount:"+o_Price);    
+    } 
+} 
+
+class  Current  extends Account 
+{   
+    float deposit,withdraw,penality;   
+    public void deposit()   
+    {      
+        System.out.println("Enter Amount to deposit") ;      
+        deposit =sc.nextFloat();      
+        show();     
+        o_Price=o_Price+deposit;      
+        System.out.println("Total amount is :"+o_Price) ;         
+    }   
+    public void check_Bal()   
+    {       
+        if(o_Price<500);           
+        o_Price=o_Price-150;           
+        System.out.println("You have debited amount 150 from your account Account balance is:"+o_Price);       
+    }          
+ 
+public void withdraw_Bal()   
+{       
+    System.out.println("Enter Amount to withdraw");       
+    withdraw=sc.nextFloat();       
+    show();       
+    if(o_Price<500)       
+    {          
+        System.out.println("For withdrawal Balance must >500 Rupee");      
+    } 
+    if(withdraw<o_Price)
+    {
+        o_Price=o_Price-withdraw;
+        System.out.println("Insufficent balance");
+    }   
+    check_Bal();
+}
+}
+class Saving extends Account
+{
+    float deposit,withdraw,intr;
+    public void deposit()
+    {
+        System.out.println("Enter amount to deposit:");
+        deposit=sc.nextFloat();
+        show();
+        o_Price=o_Price+deposit;
+        System.out.println("Total amount is"+o_Price);
+
+    }
+    public void check_interest()
+    {
+        System.out.println("Enter time and rate of interest:");
+        double t=sc.nextdouble();
+        double r=sc.nextdouble();
+        double CI=o_Price*math.pow((1+r)/100,t);
+        System.out.println("Compound interest is:"+CI);
+        o_Price=o_Price+CI;
+        System.out.println("Total amount with interest is"+o_Price);
+    }
+    public void withdraw_Bal()
+    {
+        System.out.println("Enter the amount to withdraw:");
+        withdraw=sc.nextFloat();
+        show();
+        if(withdraw<o_Price)
+        {
+            o_Price=o_Price-withdraw;
+            System.out.println("After withdrawal balance:"+o_Price);
+        }
+        else
+        {
+            System.out.println("Insufficient balance!");
+        }
+    }
+}
+
+class bank
+{
+    public static void main(String args[])
+    {
+        String ch=new String();   
+        int count=0;   
+        Scanner SS=new Scanner(System.in);   
+        Current  cu=new Current ();   
+        Saving  sav=new Saving ();      
+        System.out.println("Choose Account type:");   
+        System.out.println("Press c for Current Account:");   
+        System.out.println("Press s for Saving Account:");    
+        ch=SS.next();   
+        if(ch=="c")
+        {       
+            cu.get_info();
+            cu.check_Bal();
+            while(count!=4)       
+            {                     
+                System.out.println("1.Deposit\n2.Display\n3.Withdraw\n4.Exit");            
+                System.out.println("Enter Your Choice:");           
+                int cho=SS.nextInt();           
+                switch(cho)           
+                {               
+                    case 1: cu.deposit();               
+                    break;               
+                    case 2: cu.show();               
+                    break;               
+                    case 3: cu.withdraw_Bal();               
+                    break;               
+                    case 4: System.exit(0);               
+                    break;               
+                    default:System.out.println("Wrong Choice!");             
+                }                  
+            }
+        }
+        else if(ch=="s")
+        {       
+                    sav.get_info();              
+                    while(count!=5)
+                    {
+                    System.out.println("1.Display\n2.Deposit\n3.Withdraw\n4Interest\n5.Exit");          
+                    System.out.println("Enter Your Choice");           
+                    int cho=SS.nextInt();           
+                    switch(cho)           
+                    {               
+                        case 1: sav.show();
+                        break;              
+                        case 2: sav.deposit();              
+                        break;              
+                        case 3: sav.withdraw_Bal();               
+                        break;               
+                        case 4: sav.check_interest();
+                        break;              
+                        case 5: System.exit(0);
+                        break;               
+                        default:System.out.println("Wrong Choce!");             
+                    }
+                }
+        }
+         else
+        {       
+            System.out.println("Wrong choice!");
+        } 
+    }
+} 
