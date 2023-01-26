@@ -1,0 +1,81 @@
+package CIE;
+import java.util.Scanner;
+
+public class internals extends student
+{
+    public int cmarks[]=new int[5];
+    public int i;
+    public internals()
+    {
+    Scanner S=new Scanner(System.in);
+    System.out.println("Enter the cie marks in order:");
+    for(i=0;i<5;i++)
+    {
+        cmarks[i]=S.nextInt();
+    }
+    }
+}
+
+
+package SEE;
+import CIE.internals;
+import java.util.Scanner;
+public class externals extends internals
+{
+    public int smarks[]=new int[5];
+    public int i;
+    public externals()
+    {
+    Scanner S=new Scanner(System.in);
+    System.out.println("Enter the see marks in order:");
+    for(i=0;i<5;i++)
+    {
+        smarks[i]=S.nextInt();
+    }
+    }
+    public String toString()
+    {
+        String S="USN:"+ usn + \n+ "NAME:"+ name +\n+ "SEM:"+ sem ;
+        return S;
+    }
+    }
+
+
+
+
+
+import CIE.student;
+import CIE.internals;
+import SEE.externals;
+import java.util.Scanner;
+
+class main{
+    public static void main(String args[])
+    {
+        Scanner SS=new Scanner(System.in);
+        System.out.println("Enter the number of students:");
+        int i;
+        int n=SS.nextInt();
+        int finalmarks[]=new int[5];
+        externals c[]=new externals[n];
+        for(i=0;i<n;i++)
+        {
+            c[i]=new externals();
+        }
+        for(i=0;i<n;i++)
+        {
+            finalmarks[i]=c[i].cmarks[i]+c[i].smarks[i];
+        }
+        for(i=0;i<n;i++)
+        {
+        System.out.println("Student"+(i+1)+"details");
+        System.out.println(c[i]);
+        for(i=0;i<5;i++)
+        {
+        System.out.println(finalmarks[i]);
+        }
+        }
+
+}
+}
+
